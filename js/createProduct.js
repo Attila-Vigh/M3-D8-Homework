@@ -15,7 +15,7 @@ const handleAddProduct = async (event) => {
         method: "POST",
         body: JSON.stringify(createEvent),
         headers: {
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGRjNTQ3M2IzNTgxNzAwMTVjMjI2ZjUiLCJpYXQiOjE2MjUwNTUzMzYsImV4cCI6MTYyNjI2NDkzNn0.dV6m_EkwKvI1_pBI4tVDG5FlQHL4OE0Diny1DGoXGO0",
+            "Authorization": AUTHORIZATION_PRODUCTS,
             "Content-Type": "application/json",
         }
     }
@@ -24,8 +24,8 @@ const handleAddProduct = async (event) => {
         const response = await fetch(url, requestObj)
         
         if (response.ok){
-            const respEvent = await response.json()
-            alert("Product created successfully with an id of " + respEvent._id)
+            const newEvent = await response.json()
+            alert("Product created successfully with an id of " + newEvent._id)
         } 
         else {
             if (response.status >= 400 && response.status < 500)

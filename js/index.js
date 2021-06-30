@@ -25,7 +25,7 @@ const getProductList = async (displayProductTable ) => {
     const requestObj = {
         method: "GET",
         headers: {
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGRjNTQ3M2IzNTgxNzAwMTVjMjI2ZjUiLCJpYXQiOjE2MjUwNTUzMzYsImV4cCI6MTYyNjI2NDkzNn0.dV6m_EkwKvI1_pBI4tVDG5FlQHL4OE0Diny1DGoXGO0",
+            "Authorization": AUTHORIZATION_PRODUCTS,
             "Content-Type": "application/json",
         }
     }
