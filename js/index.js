@@ -1,44 +1,26 @@
-displayTable = (productList) => {
-    const container = document.querySelector(".products")
+displayProductTable = (productList) => {
+    const container = document.querySelector(".product-list-table tbody")
 
-    const table = `
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">_id    </th>
-                        <th scope="col">name</th>
-                        <th scope="col">description   </th>
-                        <th scope="col">brand </th>
-                        <th scope="col">imageUrl </th>
-                        <th scope="col">price   </th>
-                        <th scope="col">userId </th>
-                        <th scope="col">createdAt </th>
-                        <th scope="col">updatedAt </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${ productList.map(({ _id, name, description, brand, imageUrl, price, userId, createdAt, updatedAt, }) =>
+    const table = productList.map(
+        ({ _id, name, description, brand, imageUrl, price, userId, createdAt, updatedAt, }) => `
+            <tr>
+                <th scope="row">${ _id          }</th>
+                <td>            ${ name         }</td>
+                <td>            ${ description  }</td>
+                <td>            ${ brand        }</td>
+                <td>   <img src=${ imageUrl     }></td>
+                <td>            ${ price        }</td>
+                <td>            ${ userId       }</td>
+                <td>            ${ createdAt    }</td>
+                <td>            ${ updatedAt    }</td>
+            </tr>`
 
-        `<tr>
-                                <th scope="row">${ _id }</th>
-                                <td>            ${ name }</td>
-                                <td>            ${ description }</td>
-                                <td>            ${ brand }</td>
-                                <td>            ${ imageUrl }</td>
-                                <td>            ${ price }</td>
-                                <td>            ${ userId }</td>
-                                <td>            ${ createdAt }</td>
-                                <td>            ${ updatedAt }</td>
-                            </tr>`
     ).join("")
-        }
-                </tbody>
-            </table>`
+
     container.innerHTML = table
 }
 
-window.onload = async () => {
-
+const getProductList = async (displayProductTable ) => {
     const url = "https://striveschool-api.herokuapp.com/api/product/"
     const requestObj = {
         method: "GET",
@@ -55,7 +37,7 @@ window.onload = async () => {
         if (response.ok)
         {
             const productList = await response.json()
-            displayTable(productList)
+            displayProductTable(productList)
         }
         else
         {
@@ -74,3 +56,9 @@ window.onload = async () => {
         console.log("index.js, I am the forever curse! You will never get rid of me!")
     }
 }
+
+window.onload = () => {
+
+    getProductList( displayProductTable )
+}
+

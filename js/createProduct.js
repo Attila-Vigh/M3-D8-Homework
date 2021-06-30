@@ -1,4 +1,4 @@
-const handleSubmit = async (event) => {
+const handleAddProduct = async (event) => {
     event.preventDefault()
 
     const url = "https://striveschool-api.herokuapp.com/api/product/"
